@@ -1,0 +1,12 @@
+android.support.v7.widget.Toolbar;obj/Debug/res/layout/toolbar.xml
+cache-path;/Users/conradhill/Downloads/PermissionsPlugin-master-3/samples/PermissionsSample/PermissionsSample.Droid/obj/Debug/lp/44/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+color;obj/Debug/res/values/colors.xml
+external-cache-path;/Users/conradhill/Downloads/PermissionsPlugin-master-3/samples/PermissionsSample/PermissionsSample.Droid/obj/Debug/lp/44/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+external-path;/Users/conradhill/Downloads/PermissionsPlugin-master-3/samples/PermissionsSample/PermissionsSample.Droid/obj/Debug/lp/44/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+item;obj/Debug/res/values/style.xml
+paths;/Users/conradhill/Downloads/PermissionsPlugin-master-3/samples/PermissionsSample/PermissionsSample.Droid/obj/Debug/lp/44/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+resources;obj/Debug/res/values/colors.xml
+resources;obj/Debug/res/values/style.xml
+resources;obj/Debug/res/values-v21/style.xml
+style;obj/Debug/res/values/style.xml
+style;obj/Debug/res/values-v21/style.xml
