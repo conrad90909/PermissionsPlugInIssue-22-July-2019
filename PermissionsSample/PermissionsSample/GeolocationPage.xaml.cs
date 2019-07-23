@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Xamarin.Essentials;
@@ -18,106 +14,7 @@ namespace PermissionsSample
         }
 
         bool busy;
-        async void ButtonPermission_OnClicked(object sender, EventArgs e)
-        {
-            if (busy)
-                return;
-            
-            busy = true;
-            ((Button) sender).IsEnabled = false;
-
-            var status = PermissionStatus.Unknown;
-            switch (((Button)sender).StyleId)
-            {
-                case "Calendar":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<CalendarPermission>();
-                    break;
-                case "Camera":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
-                    break;
-                case "Contacts":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<ContactsPermission>();
-                    break;
-                case "Microphone":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<MicrophonePermission>();
-					break;
-				case "Geolocation":
-					status = await CrossPermissions.Current.CheckPermissionStatusAsync<LocationPermission>();
-					break;
-				case "Phone":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<PhonePermission>();
-					break;
-                case "Photos":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<PhotosPermission>();
-					break;
-                case "Reminders":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<RemindersPermission>();
-					break;
-                case "Sensors":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<SensorsPermission>();
-					break;
-                case "Sms":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<SmsPermission>();
-					break;
-                case "Storage":
-                    status = await CrossPermissions.Current.CheckPermissionStatusAsync<StoragePermission>();
-					break;
-                case "Settings":
-                    CrossPermissions.Current.OpenAppSettings();
-					((Button)sender).IsEnabled = true;
-					busy = false;
-					return;
-            }
-
-            await DisplayAlert("Pre - Results", status.ToString(), "OK");
-
-            if (status != PermissionStatus.Granted)
-            {
-                switch (((Button)sender).StyleId)
-                {
-                    case "Calendar":
-                        status = await Utils.CheckPermissions(Permission.Calendar);
-                        break;
-                    case "Camera":
-                        status = await Utils.CheckPermissions(Permission.Camera);
-                        break;
-                    case "Contacts":
-                        status = await Utils.CheckPermissions(Permission.Contacts);
-                        break;
-					case "Geolocation":
-						status = await Utils.CheckPermissions(Permission.Location);
-						break;
-					case "Microphone":
-                        status = await Utils.CheckPermissions(Permission.Microphone);
-                        break;
-                    case "Phone":
-                        status = await Utils.CheckPermissions(Permission.Phone);
-                        break;
-                    case "Photos":
-                        status = await Utils.CheckPermissions(Permission.Photos);
-                        break;
-                    case "Reminders":
-                        status = await Utils.CheckPermissions(Permission.Reminders);
-                        break;
-                    case "Sensors":
-                        status = await Utils.CheckPermissions(Permission.Sensors);
-						break;
-                    case "Sms":
-                        status = await Utils.CheckPermissions(Permission.Sms);
-                        break;
-                    case "Storage":
-                        status = await Utils.CheckPermissions(Permission.Storage);
-                        break;
-                }
-
-                await DisplayAlert("Results", status.ToString(), "OK");
-
-            }
-
-            busy = false;
-            ((Button) sender).IsEnabled = true;
-        }
-
+        
         async void Button_OnClicked(object sender, EventArgs e)
         {
             if (busy)
@@ -136,6 +33,7 @@ namespace PermissionsSample
 						await DisplayAlert("Need location", "Gunna need that location", "OK");
 					}
 
+					// THIS LINE OF CODE DOESN'T WAIT IT BREAKS OUT OF HERE WITH NO EXCEPTION, IT DOES GET PERMISSION THOUGH.
 					status = await CrossPermissions.Current.RequestPermissionAsync<LocationPermission>();
 				}
 
